@@ -15,7 +15,7 @@ export default function VoiceToImageGeneratorComponent() {
   const [isProcessing, setIsProcessing] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const { status, startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({ audio: true })
+  const { startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({ audio: true })
 
   const handleStartRecording = () => {
     setIsRecording(true)
