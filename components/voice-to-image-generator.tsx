@@ -91,7 +91,7 @@ export default function VoiceToImageGeneratorComponent() {
       setGeneratedImage(imageUrl)
     } catch (error) {
       console.error('Error generating image:', error)
-      setError(error instanceof Error ? error.message : 'An unknown error occurred')
+      setError(error instanceof Error ? error.message : 'An unknown error may has occurred')
     } finally {
       setIsGenerating(false)
     }
