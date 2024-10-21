@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useReactMediaRecorder } from 'react-media-recorder'
 import { Mic, StopCircle, Image, Redo } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -14,11 +14,6 @@ export default function VoiceToImageGeneratorComponent() {
   const [editablePrompt, setEditablePrompt] = useState('')
   const [isProcessing, setIsProcessing] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   const { startRecording, stopRecording, mediaBlobUrl } = useReactMediaRecorder({ audio: true })
 
@@ -96,14 +91,10 @@ export default function VoiceToImageGeneratorComponent() {
       setGeneratedImage(imageUrl)
     } catch (error) {
       console.error('Error generating image:', error)
-      setError(error instanceof Error ? error.message : 'An unknown error may have occurred')
+      setError(error instanceof Error ? error.message : 'An unknown error may has occurred')
     } finally {
       setIsGenerating(false)
     }
-  }
-
-  if (!isClient) {
-    return null; // or return a loading spinner
   }
 
   return (
@@ -173,7 +164,7 @@ export default function VoiceToImageGeneratorComponent() {
           {generatedImage && !isGenerating && (
             <div className="space-y-4">
               <div className="relative">
-                <img src={generatedImage} alt="Generated art based on voice input" className="w-full rounded-lg" />
+                <img src={generatedImage} alt="Generated image" className="w-full rounded-lg" />
               </div>
               <div className="p-4 bg-gray-100 rounded-lg">
                 <p className="text-sm font-medium">Current Prompt:</p>
